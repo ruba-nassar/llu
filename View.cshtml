@@ -1,0 +1,36 @@
+﻿@using System.Data.Sql;
+@{
+
+    var db = Database.Open("homework");
+    var persons = db.Query("SELECT * FROM Person");
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>View Page</title>
+</head>
+<body>
+    <h2>View Records</h2>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Address</th>
+        </tr>
+
+        @foreach (var person in persons)
+        {
+            <tr>
+                <td>@person.Id</td>
+                <td>@person.Name</td>
+                <td>@person.Mobile</td>
+                <td>@person.Address</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
